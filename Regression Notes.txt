@@ -1,0 +1,74 @@
+Regression :
+
+Regression is intuitive in a visual manner.
+
+> Classification : Predict a category
+> Regression : Predict a number on the real line.
+
+You may object!
+    - In code, spam = 1 and not spam = 0, aren't these numbers?
+    - These numbers are just symbols to represent the category
+    - We can switch them with no effect.
+
+> In Regression, the numbers do have meanings.
+
+Example : Predicting House Prices
+    - Real estate application
+    - Can have > 1 input:
+        = Average family income
+        = Crime rate
+        = Size
+        = Number of bedrooms
+        = When last renovated
+
+Multi-dimensional Input
+    - 1D --> Line
+    - 2D --> Plane
+    - >2D --> Hyperplane(not visualizable)
+
+
+Business Example - The Stock Market
+    - Rule : Buy low, sell high
+    - Normally, people violate this rule because of emotions such as fear
+    - From an ML(regression) perspective, what do we need to do?
+        - Inputs:
+            + Price for last 10 days
+            + Was it mentioned in the news yesterday?
+            + Was it positive?
+        - Predict:
+            + Tomorrow's stock price
+
+
+How does the code look like?
+> Exactly the same as before!(For classification case)
+    - Except ofcourse now we use a regression model and not a classifier.
+
+---------------------------------------------------------------------------------------------------
+code :
+
+model = LinearRegression()
+model.fit(X,Y)                  # Learning
+predictions = model.predict(X)  # make predictions
+score = model.score(X,Y)        # Evaluate
+
+---------------------------------------------------------------------------------------------------
+
+What is the Score?
+> Accuracy no longer makes sense(#correct/ #total)
+    - We no longer have labels(which are neither right or wrong)
+> Doesn't make sense for regression
+    - If true house price is $1 million, but we predict $1,000,001 - are we wrong?
+---------------------------------------------------------------------------------------------------
+
+> Regression uses MSE [ MEAN SQUARED ERROR ] , but this is not what is returned by Score.
+
+Why not MSE [Mean Squared Error]?
+> House prices will range from hundreds of thousands to millions.
+> Grades will range from 0...100
+> An error of 100squared is not bad for house prices but it is bad for grades.
+Meaning if price is 1Mil dollars and prediction is $1,004,999.
+---------------------------------------------------------------------------------------------------
+
+The R(squared) - The corelation coefficient.
+R(squared) = 1 - (SSE/SST)
+sum of squares total (SST), the sum of squares regression (SSR), and the sum of squares error (SSE). 
